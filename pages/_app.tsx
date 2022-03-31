@@ -24,12 +24,15 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
       break;
     case "Next.js-hydration":
       // handle hydration results
+      console.log(metric);
       break;
     case "Next.js-route-change-to-render":
       // handle route-change to render results
+      console.log(metric);
       break;
     case "Next.js-render":
       // handle render results
+      console.log(metric);
       break;
     default:
       break;

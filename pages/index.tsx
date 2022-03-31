@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 const App: NextPage = () => {
   return (
@@ -19,12 +20,30 @@ const App: NextPage = () => {
         Un cas simple, nous allons aller interroger une API de la NASA pour
         ramener toutes les images concernant la lune.
       </p>
-
+      <div className="renderBox">
+        <Link href="/CSR">
+          <a>CSR</a>
+        </Link>
+        <Link href="/SSR">
+          <a>SSR</a>
+        </Link>
+        <Link href="/SSG">
+          <a>SSG</a>
+        </Link>
+      </div>
       <style jsx global>
         {`
           body {
             background: black;
             color: white;
+          }
+          .renderBox {
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+          }
+          a {
+            display: block;
           }
         `}
       </style>
