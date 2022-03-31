@@ -1,9 +1,7 @@
-//import type { NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
-//import CSR from "./CSR";
 
-//const App: NextPage = () => {
-const App = () => {
+const App: NextPage = () => {
   return (
     <>
       {/* <Head>

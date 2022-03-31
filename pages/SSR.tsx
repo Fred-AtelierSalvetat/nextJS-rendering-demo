@@ -1,7 +1,16 @@
+import { useEffect } from "react";
+
 import styles from "./sharedStyles.module.scss";
 import { getNasaImages } from "../api/nasaAPI";
 
 const SSR = ({ items }) => {
+  const renderingStart = performance.now();
+  console.log({ renderingStart });
+  useEffect(() => {
+    const renderingEnd = performance.now();
+    console.log(renderingEnd - renderingStart);
+  });
+
   return (
     <main className={styles.main}>
       {items?.map(({ nasa_id, title, src }) => (
