@@ -30,6 +30,7 @@ const CSR = () => {
   );
 };
 
-//CSR.getInitialProps = async () => ({}); //prevent useless optimization that lead to performance
+//prevent useless optimization that lead "toReferenceError: performance is not defined"
+CSR.getInitialProps = async () => ({});
 
 export default CSR;
