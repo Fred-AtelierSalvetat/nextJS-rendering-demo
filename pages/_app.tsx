@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
-  console.log(metric);
+  // console.log(metric);
   switch (metric.name) {
     case "FCP":
       // handle FCP results
@@ -24,15 +24,12 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
       break;
     case "Next.js-hydration":
       // handle hydration results
-      console.log(metric);
       break;
     case "Next.js-route-change-to-render":
       // handle route-change to render results
-      console.log(metric);
       break;
     case "Next.js-render":
       // handle render results
-      console.log(metric);
       break;
     default:
       break;
