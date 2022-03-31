@@ -30,4 +30,6 @@ const CSR = () => {
   );
 };
 
+//CSR.getInitialProps = async () => ({}); //prevent useless optimization that lead to performance
+
 export default CSR;

@@ -5,7 +5,6 @@ import { getNasaImages } from "../api/nasaAPI";
 
 const SSR = ({ items }) => {
   const renderingStart = performance.now();
-  console.log({ renderingStart });
   useEffect(() => {
     const renderingEnd = performance.now();
     console.log(renderingEnd - renderingStart);
