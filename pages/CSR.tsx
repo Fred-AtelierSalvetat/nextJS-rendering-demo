@@ -25,7 +25,8 @@ const CSR = () => {
     <main className={styles.main}>
       {items &&
         items.map(({ nasa_id, title, src }) => (
-          <img className={styles.image} key={nasa_id} src={src} alt={title} />
+          <p>{src}</p>
+          // <img className={styles.image} key={nasa_id} src={src} alt={title} />
         ))}
     </main>
   );
