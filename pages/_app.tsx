@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
-  // console.log(metric);
+  console.log(metric);
   switch (metric.name) {
     case "FCP":
       // handle FCP results

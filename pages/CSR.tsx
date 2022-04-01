@@ -7,13 +7,6 @@ import styles from "./sharedStyles.module.scss";
 const CSR = () => {
   const [items, setItems] = useState<Item[]>();
 
-  const renderingStart = global.performance?.now();
-  useEffect(() => {
-    const renderingEnd = global.performance?.now();
-
-    console.log(renderingEnd - renderingStart);
-  }, [items]);
-
   useEffect(() => {
     (async () => {
       const items = await getNasaImages();
