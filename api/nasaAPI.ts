@@ -23,23 +23,7 @@ async function getNasaImages() {
     `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
     { cache: "no-store" }
   );
-  await fetch(
-    `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
-    { cache: "no-store" }
-  );
-  await fetch(
-    `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
-    { cache: "no-store" }
-  );
-  const renderingEnd = performance.now();
 
-  return [
-    {
-      nasa_id: "1",
-      title: "titre",
-      src: (renderingEnd - renderingStart).toString(),
-    } as Item,
-  ];
   //Now get collection for each nasa_id
   const requestsMap = data.collection.items.map(async (item) => {
     const { nasa_id, title } = item.data[0];
@@ -65,8 +49,11 @@ async function getNasaImages() {
       src: itemData.collection.items[0].href,
     });
   }
-
-  return items;
+  const renderingEnd = performance.now();
+  return {
+    duration: renderingEnd - renderingStart,
+    items,
+  };
 }
 
 export { getNasaImages };

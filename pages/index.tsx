@@ -2,7 +2,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
+import { useDurationsContext } from "../state/DurationsProvider";
+
 const App: NextPage = () => {
+  const {
+    csr: [csrDuration],
+    ssr: [ssrDuration],
+    ssg: [ssgDuration],
+  } = useDurationsContext();
+
   return (
     <>
       {/* <Head>
@@ -21,15 +29,24 @@ const App: NextPage = () => {
         ramener toutes les images concernant la lune.
       </p>
       <div className="renderBox">
-        <Link href="/CSR">
-          <a>CSR</a>
-        </Link>
-        <Link href="/SSR">
-          <a>SSR</a>
-        </Link>
-        <Link href="/SSG">
-          <a>SSG</a>
-        </Link>
+        <div>
+          <Link href="/CSR">
+            <a>CSR</a>
+          </Link>
+          {csrDuration && <p>{csrDuration}</p>}
+        </div>
+        <div>
+          <Link href="/SSR">
+            <a>SSR</a>
+          </Link>
+          {ssrDuration && <p>{ssrDuration}</p>}
+        </div>
+        <div>
+          <Link href="/SSG">
+            <a>SSG</a>
+          </Link>
+          {ssgDuration && <p>{ssgDuration}</p>}
+        </div>
       </div>
       <style jsx global>
         {`

@@ -1,11 +1,18 @@
-import { useEffect } from "react";
+import { getNasaImages } from "../api/nasaAPI";
+import { useDurationsContext } from "../state/DurationsProvider";
 
 import styles from "./sharedStyles.module.scss";
-import { getNasaImages } from "../api/nasaAPI";
 
-const SSR = ({ items }) => {
+const SSR = ({ duration, items }) => {
+  const {
+    ssr: [ssrDuration, setSsrDuration],
+  } = useDurationsContext();
+
+  setSsrDuration(duration);
+
   return (
     <main className={styles.main}>
+      {ssrDuration && <p>{ssrDuration}</p>}
       {items?.map(({ nasa_id, title, src }) => (
         <p>{src}</p>
         // <img className={styles.image} key={nasa_id} src={src} alt={title} />
@@ -15,9 +22,8 @@ const SSR = ({ items }) => {
 };
 
 export async function getServerSideProps() {
-  const items = await getNasaImages();
   return {
-    props: { items }, // will be passed to the page component as props
+    props: { ...(await getNasaImages()) },
   };
 }
 export default SSR;

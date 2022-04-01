@@ -1,7 +1,13 @@
 import type { AppProps, NextWebVitalsMetric } from "next/app";
 
+import { DurationsProvider } from "../state/DurationsProvider";
+
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <DurationsProvider>
+      <Component {...pageProps} />
+    </DurationsProvider>
+  );
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {

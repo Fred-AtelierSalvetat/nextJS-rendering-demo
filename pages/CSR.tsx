@@ -1,21 +1,29 @@
 import { useState, useEffect } from "react";
 
 import { Item, getNasaImages } from "../api/nasaAPI";
+import { useDurationsContext } from "../state/DurationsProvider";
 
 import styles from "./sharedStyles.module.scss";
 
 const CSR = () => {
   const [items, setItems] = useState<Item[]>();
 
+  const {
+    csr: [csrDuration, setCsrDuration],
+  } = useDurationsContext();
+
   useEffect(() => {
     (async () => {
-      const items = await getNasaImages();
+      setCsrDuration();
+      const { items, duration } = await getNasaImages();
       setItems([...items]);
+      setCsrDuration(duration);
     })();
   }, []);
 
   return (
     <main className={styles.main}>
+      {csrDuration && <p>{csrDuration}</p>}
       {items &&
         items.map(({ nasa_id, title, src }) => (
           <p>{src}</p>
