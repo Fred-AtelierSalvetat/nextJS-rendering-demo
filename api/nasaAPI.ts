@@ -1,3 +1,5 @@
+import { performance } from "universal-perf-hooks";
+
 export interface Item {
   nasa_id: string;
   title: string;
@@ -6,8 +8,8 @@ export interface Item {
 
 async function getNasaImages() {
   //Get collection
-  const renderingStart = global.performance && global.performance?.now();
-
+  //const renderingStart = performance && global.performance?.now();
+  const renderingStart = performance.now();
   const response = await fetch(
     `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
     { cache: "no-store" }
@@ -16,7 +18,8 @@ async function getNasaImages() {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
   const data = await response.json();
-  const renderingEnd = global.performance && global.performance?.now();
+  //const renderingEnd = global.performance && global.performance?.now();
+  const renderingEnd = performance.now();
 
   return [
     {

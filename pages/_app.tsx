@@ -9,6 +9,7 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
   switch (metric.name) {
     case "FCP":
       // handle FCP results
+      // TODO Nice to illustrate fetching benefits on SSR/SSG
       break;
     case "LCP":
       // handle LCP results
