@@ -3,12 +3,6 @@ import { getNasaImages } from "../api/nasaAPI";
 import { useEffect } from "react";
 
 const SSG = ({ items }) => {
-  // const renderingStart = global.performance && global.performance?.now();
-  // useEffect(() => {
-  //   const renderingEnd = global.performance && global.performance?.now();
-  //   console.log(renderingEnd - renderingStart);
-  // }, [items]);
-
   return (
     <main className={styles.main}>
       {items?.map(({ nasa_id, title, src }) => (

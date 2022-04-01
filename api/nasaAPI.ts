@@ -6,6 +6,8 @@ export interface Item {
 
 async function getNasaImages() {
   //Get collection
+  const renderingStart = global.performance && global.performance?.now();
+
   const response = await fetch(
     `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
     { cache: "no-store" }
@@ -14,12 +16,13 @@ async function getNasaImages() {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
   const data = await response.json();
+  const renderingEnd = global.performance && global.performance?.now();
 
   return [
     {
       nasa_id: "1",
       title: "titre",
-      src: "toto",
+      src: (renderingEnd - renderingStart).toString(),
     } as Item,
   ];
   //Now get collection for each nasa_id
