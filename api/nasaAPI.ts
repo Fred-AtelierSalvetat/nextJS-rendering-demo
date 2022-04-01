@@ -19,6 +19,18 @@ async function getNasaImages() {
   }
   const data = await response.json();
   //const renderingEnd = global.performance && global.performance?.now();
+  await fetch(
+    `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
+    { cache: "no-store" }
+  );
+  await fetch(
+    `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
+    { cache: "no-store" }
+  );
+  await fetch(
+    `https://images-api.nasa.gov/search?q=moon&media_type=image&page=100`,
+    { cache: "no-store" }
+  );
   const renderingEnd = performance.now();
 
   return [
