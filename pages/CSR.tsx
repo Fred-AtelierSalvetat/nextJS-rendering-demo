@@ -7,9 +7,9 @@ import styles from "./sharedStyles.module.scss";
 const CSR = () => {
   const [items, setItems] = useState<Item[]>();
 
-  const renderingStart = performance?.now();
+  const renderingStart = global.performance?.now();
   useEffect(() => {
-    const renderingEnd = performance?.now();
+    const renderingEnd = global.performance?.now();
 
     console.log(renderingEnd - renderingStart);
   }, [items]);
@@ -31,7 +31,7 @@ const CSR = () => {
   );
 };
 
-//prevent useless optimization that lead "toReferenceError: performance is not defined"
-CSR.getInitialProps = async () => ({});
+// //prevent useless optimization that lead "toReferenceError: performance is not defined"
+// CSR.getInitialProps = async () => ({});
 
 export default CSR;

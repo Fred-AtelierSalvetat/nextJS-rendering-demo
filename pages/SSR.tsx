@@ -4,9 +4,9 @@ import styles from "./sharedStyles.module.scss";
 import { getNasaImages } from "../api/nasaAPI";
 
 const SSR = ({ items }) => {
-  const renderingStart = performance?.now();
+  const renderingStart = global.performance?.now();
   useEffect(() => {
-    const renderingEnd = performance?.now();
+    const renderingEnd = global.performance?.now();
     console.log(renderingEnd - renderingStart);
   }, [items]);
 
