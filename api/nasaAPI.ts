@@ -17,10 +17,10 @@ async function getNasaImages() {
 
   return [
     {
-      nasa_id: 1,
+      nasa_id: "1",
       title: "titre",
       src: "toto",
-    },
+    } as Item,
   ];
   //Now get collection for each nasa_id
   const requestsMap = data.collection.items.map(async (item) => {
