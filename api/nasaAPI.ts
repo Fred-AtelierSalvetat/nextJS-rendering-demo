@@ -6,6 +6,8 @@ export interface Item {
 
 async function getNasaImages() {
   //Get collection
+  await fetch(`https://data.ratp.fr/api/datasets/1.0/search/?q=&rows=10000`);
+
   const response = await fetch(
     `https://images-api.nasa.gov/search?q=moon&media_type=image`
   );
