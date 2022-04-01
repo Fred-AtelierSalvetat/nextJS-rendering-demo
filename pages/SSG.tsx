@@ -3,9 +3,9 @@ import { getNasaImages } from "../api/nasaAPI";
 import { useEffect } from "react";
 
 const SSG = ({ items }) => {
-  const renderingStart = performance?.now();
+  const renderingStart = performance && performance?.now();
   useEffect(() => {
-    const renderingEnd = performance?.now();
+    const renderingEnd = performance && performance?.now();
     console.log(renderingEnd - renderingStart);
   }, [items]);
 
