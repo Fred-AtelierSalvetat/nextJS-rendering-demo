@@ -9,7 +9,11 @@ export function DurationsProvider({ children }) {
   const [ssrDuration, setSsrDuration] = useState();
   const [ssgDuration, setSsgDuration] = useState();
 
-  const store = {
+  const store: [
+    csr: [number | undefined, (number) => void],
+    ssr: [number | undefined, (number) => void],
+    ssg: [number | undefined, (number) => void]
+  ] = {
     csr: [csrDuration, setCsrDuration],
     ssr: [ssrDuration, setSsrDuration],
     ssg: [ssgDuration, setSsgDuration],
