@@ -4,9 +4,9 @@ import { createContext, useContext, useState } from "react";
 const DurationsContext = createContext();
 
 export interface IStore {
-  csr: [number | undefined, (number) => void];
-  ssr: [number | undefined, (number) => void];
-  ssg: [number | undefined, (number) => void];
+  csr: [number | undefined, (value?: number) => void];
+  ssr: [number | undefined, (value?: number) => void];
+  ssg: [number | undefined, (value?: number) => void];
 }
 
 // Export Provider.
