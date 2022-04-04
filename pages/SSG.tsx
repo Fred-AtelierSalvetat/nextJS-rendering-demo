@@ -23,7 +23,7 @@ const SSG = ({ duration, items }) => {
 
 export async function getStaticProps() {
   return {
-    props: { ...(await getNasaImages()) },
+    props: { ...(await getNasaImages()), duration: 0 }, //Fetch made at build time, live xp duration=0
   };
 }
 export default SSG;
