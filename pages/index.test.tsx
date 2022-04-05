@@ -23,7 +23,17 @@ describe("Home", () => {
     // expect(heading).toBeInTheDocument();
   });
   it.todo("shall display duration of each rendering as initialized in context");
-  it.todo("shall present a link to CSR page experience");
-  it.todo("shall present a link to SSR page experience");
-  it.todo("shall present a link to SSG page experience");
+  it("shall present a first link to CSR page experience", () => {
+    render(<Home />);
+    expect(screen.getAllByRole("link")[0]).toHaveAttribute("href", "/CSR");
+  });
+  it("shall present a second link to SSR page experience", () => {
+    render(<Home />);
+    expect(screen.getAllByRole("link")[1]).toHaveAttribute("href", "/SSR");
+  });
+
+  it("shall present a third link to SSG page experience", () => {
+    render(<Home />);
+    expect(screen.getAllByRole("link")[2]).toHaveAttribute("href", "/SSG");
+  });
 });

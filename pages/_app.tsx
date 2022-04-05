@@ -2,6 +2,8 @@ import type { AppProps, NextWebVitalsMetric } from "next/app";
 
 import { DurationsProvider } from "../state/DurationsProvider";
 
+import "./globalStyles.scss";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <DurationsProvider>
