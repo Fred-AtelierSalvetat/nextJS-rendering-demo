@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 
 import { useDurationsContext } from "../state/DurationsProvider";
 import styles from "./index.module.scss";
+
+import Card from "../components/Card";
 
 const App: NextPage = () => {
   const {
@@ -32,76 +33,29 @@ const App: NextPage = () => {
       </p>
 
       <div className={styles.renderBox}>
-        <div className={styles.renderCard}>
-          <h2>Client Side Rendering</h2>
-          <p>
-            Le client se charge de la collecte des données et du rendu de la
-            page.
-          </p>
-          <div>
-            <div className={styles.measureBox}>
-              <p>Collecte des données</p>
-              <div className={styles.duration}>
-                {csrDuration ? <p>{`${~~csrDuration} ms`}</p> : <p>--- ms</p>}
-              </div>
-            </div>
-          </div>
-          <Link href="/CSR">
-            <a className={styles.link}>CSR test</a>
-          </Link>
-        </div>
-        <div className={styles.renderCard}>
-          <h2>Server Side Rendering</h2>
-          <p>
-            Le serveur collecte les donnée et effectue un pré-rendu des pages.
-          </p>
-          <div>
-            <div className={styles.measureBox}>
-              <p>Collecte des données</p>
-              <div className={styles.duration}>
-                {ssrDuration ? <p>{`${~~ssrDuration} ms`}</p> : <p>--- ms</p>}
-              </div>
-            </div>
-          </div>
-          <Link href="/SSR">
-            <a className={styles.link}>SSR test</a>
-          </Link>
-        </div>
-        <div className={styles.renderCard}>
-          <h2>Static Site Generation</h2>
-          <p>
-            Tout est préparé en amont sur le serveur lors de la compilation.
-          </p>
-          <div>
-            <div className={styles.measureBox}>
-              <p>Collecte des données</p>
-              <div className={styles.duration}>
-                {ssgDuration !== undefined ? (
-                  <p>{`${~~ssgDuration} ms`}</p>
-                ) : (
-                  <p>--- ms</p>
-                )}
-              </div>
-            </div>
-          </div>
-          <Link href="/SSG">
-            <a className={styles.link}>SSG test</a>
-          </Link>
-        </div>
+        <Card
+          title="Client Side Rendering"
+          description="Le client se charge de la collecte des données et du rendu de la page."
+          duration={csrDuration}
+          linkDesc="CSR test"
+          linkHref="/CSR"
+        />
+        <Card
+          title="Server Side Rendering"
+          description="Le serveur collecte les donnée et effectue un pré-rendu des pages."
+          duration={ssrDuration}
+          linkDesc="SSR test"
+          linkHref="/SSR"
+        />
+        <Card
+          title="Static Site Generation"
+          description="Tout est préparé en amont sur le serveur lors de la compilation."
+          duration={ssgDuration}
+          linkDesc="SSG test"
+          linkHref="/SSG"
+        />
       </div>
     </>
   );
 };
 export default App;
-
-// {/* A quoi ça sert? A optimiser les performances.
-//
-//
-
-// 3 cartes
-//     CSR : client <-> API
-//     SSR : client <-> Server <-> API
-//     SSG : client <-> Server [prerender <-> API]
-
-// A noter que Next.js propose d'autres optimisation et facilite beaucoup le travail des développeurs.
-// Vous avez une web app React pas vraiment réactive, ce n'était pas le but non? Contactez-moi ;-) */}

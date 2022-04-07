@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import RenderPage from "../components/RenderPage";
 import { Item, getNasaImages } from "../api/nasaAPI";
 import { useDurationsContext } from "../state/DurationsProvider";
 
@@ -15,21 +16,23 @@ const CSR = () => {
   useEffect(() => {
     (async () => {
       setCsrDuration();
-      const { items, duration } = await getNasaImages();
-      setItems([...items]);
-      setCsrDuration(duration);
+      try {
+        const { items, duration } = await getNasaImages();
+        setItems([...items]);
+        setCsrDuration(duration);
+      } catch {
+        console.log("Oups");
+      }
     })();
   }, []);
 
   return (
-    <main className={styles.main}>
-      {csrDuration && <p>{csrDuration}</p>}
-      {items &&
-        items.map(({ nasa_id, title, src }) => (
-          <p>{src}</p>
-          // <img className={styles.image} key={nasa_id} src={src} alt={title} />
-        ))}
-    </main>
+    <>
+      <main>
+        <h1>Client Side Rendering</h1>
+        <RenderPage items={items} duration={csrDuration} />
+      </main>
+    </>
   );
 };
 
