@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 
+import type { NextPage } from "next";
+
 import RenderPage from "../components/RenderPage";
 import { Item, getNasaImages } from "../api/nasaAPI";
 import { useDurationsContext } from "../state/DurationsProvider";
 
 import styles from "./sharedStyles.module.scss";
 
-const CSR = () => {
+const CSR: NextPage = () => {
   const [items, setItems] = useState<Item[]>();
-
+  const [fetchError, setFetchError] = useState<boolean>(false);
   const {
     csr: [csrDuration, setCsrDuration],
   } = useDurationsContext();
@@ -20,8 +22,9 @@ const CSR = () => {
         const { items, duration } = await getNasaImages();
         setItems([...items]);
         setCsrDuration(duration);
-      } catch {
-        console.log("Oups");
+      } catch (error) {
+        console.log(error.message);
+        setFetchError(true);
       }
     })();
   }, []);
@@ -29,14 +32,17 @@ const CSR = () => {
   return (
     <>
       <main>
-        <h1>Client Side Rendering</h1>
-        <RenderPage items={items} duration={csrDuration} />
+        {fetchError ? (
+          <p>Les API de la NASA ne répondent plus DAMNED!</p>
+        ) : (
+          <>
+            <h1>Client Side Rendering</h1>
+            <RenderPage items={items} duration={csrDuration} />
+          </>
+        )}
       </main>
     </>
   );
 };
-
-// //prevent useless optimization that lead "toReferenceError: performance is not defined"
-// CSR.getInitialProps = async () => ({});
 
 export default CSR;

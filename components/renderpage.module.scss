@@ -1,3 +1,14 @@
+.headcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  .link {
+    color: white;
+    font-size: 2rem;
+  }
+}
+
 .main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
