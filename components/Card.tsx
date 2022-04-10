@@ -3,7 +3,16 @@ import CountUp from "react-countup";
 
 import styles from "./card.module.scss";
 
-const Card = ({ title, description, duration, linkDesc, linkHref }) => {
+interface ICard {
+  title: string;
+  description: string;
+  duration?: number;
+  linkDesc: string;
+  linkHref: string;
+}
+
+// Card component presenting rendering solution, test results and launch test button
+const Card = ({ title, description, duration, linkDesc, linkHref }: ICard) => {
   return (
     <div className={styles.renderCard}>
       <h2>{title}</h2>

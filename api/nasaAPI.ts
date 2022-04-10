@@ -3,13 +3,14 @@ import { performance } from "universal-perf-hooks";
 export interface Item {
   nasa_id: string;
   title: string;
-  src: string;
+  thumb: string;
+  src: { href: string }[];
 }
 
 async function getNasaImages() {
   //Get collection
   const renderingStart = performance.now();
-  // try {
+
   const response = await fetch(
     `https://images-api.nasa.gov/search?q=moon&media_type=image`,
     { cache: "no-store" }
@@ -53,9 +54,6 @@ async function getNasaImages() {
     duration: renderingEnd - renderingStart,
     items,
   };
-  // } catch (error) {
-  //   throw new Error(`getNasaImages fetch error: ${error}`);
-  // }
 }
 
 export { getNasaImages };
